@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <title>BEEP!</title>
+</head>
+<body>
+    <div class="container">
+        <div class="input-container">
+            <input type="text" placeholder="Questions here seperated with ," id="inputBox">
+            <input type="text" placeholder="Answers here separated with ," id="answerBox">
+        </div>
+        <div class="import-button-container">
+            <button onclick="loadFile()" id="importBtn">Import Questions</button>
+            <button onclick="loadAnswersFile()" id="importAnswersBtn">Import Answers</button>
+        </div>
+        <div class="button-container">
+            <button onclick="exportFile()" id="exportBtn">Export Questions</button>
+            <button onclick="exportAnswersFile()" id="exportAnswersBtn">Export Answers</button>
+        </div>
+        <div id="delayContainer">
+            <input id="delayStart" class="delayBox" type="number" placeholder="Delay start">
+            <input id="delayEnd" class="delayBox" type="number" placeholder="Delay end">
+        </div>
+        <input id="delayAnswer" class="delayBox" type="number" placeholder="Delay before answer">
+        <button onclick="start()" id="startBtn">Start</button>
+        <textarea id="previousQuestions" readonly placeholder="Previously asked questions"></textarea>
+    </div>  
+</body>
+</html>
