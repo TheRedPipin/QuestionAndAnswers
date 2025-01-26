@@ -18,7 +18,7 @@ function start() {
             const answerDelay = parseInt(document.getElementById("delayAnswer").value, 10);
             const randomSeconds = Math.floor(Math.random() * (endDelay - startDelay + 1)) + startDelay;
             intervalId = setTimeout(() => {
-                if (!started) return; // Stop if started is false
+                if (!started) return;
                 const randomIndex = Math.floor(Math.random() * questions.length);
                 const randomQuestion = questions[randomIndex];
                 const randomAnswer = answers[randomIndex];
@@ -30,19 +30,15 @@ function start() {
                 previousQuestions.push(randomQuestion);
                 const previousQuestionsBox = document.getElementById("previousQuestions");
                 previousQuestionsBox.value = previousQuestions.join("\n");
-                previousQuestionsBox.scrollTop = previousQuestionsBox.scrollHeight; // Auto scroll
-
-                // Speak the answer after the question has been spoken
+                previousQuestionsBox.scrollTop = previousQuestionsBox.scrollHeight;
                 utterance.onend = () => {
                     setTimeout(() => {
-                        if (!started) return; // Stop if started is false
+                        if (!started) return;
                         const answerUtterance = new SpeechSynthesisUtterance(randomAnswer);
                         answerUtterance.lang = "en-US";
                         answerUtterance.pitch = 1;
                         answerUtterance.rate = 1;
                         speechSynthesis.speak(answerUtterance);
-
-                        // Start the next interval after the answer has been spoken
                         answerUtterance.onend = () => {
                             randomInterval();
                         };
@@ -54,7 +50,7 @@ function start() {
     } else {
         document.getElementById("startBtn").innerHTML = "Start";
         document.getElementById("startBtn").style.backgroundColor = "#4CAF50";
-        clearTimeout(intervalId); // Use clearTimeout instead of clearInterval
+        clearTimeout(intervalId);
     }
 }
 
