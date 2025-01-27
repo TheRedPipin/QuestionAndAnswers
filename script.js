@@ -3,6 +3,7 @@ let questions;
 let answers;
 let intervalId;
 let previousQuestions = [];
+let previousAnswers = [];
 
 function start() {
     started = !started;
@@ -28,8 +29,14 @@ function start() {
                 utterance.rate = 1; 
                 speechSynthesis.speak(utterance);
                 previousQuestions.push(randomQuestion);
+                previousAnswers.push(randomAnswer);
                 const previousQuestionsBox = document.getElementById("previousQuestions");
-                previousQuestionsBox.value = previousQuestions.join("\n");
+                previousQuestions.forEach((element, index) => {
+                    previousQuestionsBox.value += element;
+                    previousQuestionsBox.value += "\n"
+                    previousQuestionsBox.value += previousAnswers[index];
+                    previousQuestionsBox.value += "\n"
+                });
                 previousQuestionsBox.scrollTop = previousQuestionsBox.scrollHeight;
                 utterance.onend = () => {
                     setTimeout(() => {
