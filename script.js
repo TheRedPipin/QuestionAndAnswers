@@ -24,7 +24,7 @@ function start() {
                 const randomQuestion = questions[randomIndex];
                 const randomAnswer = answers[randomIndex];
                 const utterance = new SpeechSynthesisUtterance(randomQuestion);
-                utterance.lang = "en-US";
+                utterance.lang = "en-GB";
                 utterance.pitch = 1;
                 utterance.rate = 1; 
                 speechSynthesis.speak(utterance);
@@ -42,7 +42,7 @@ function start() {
                     setTimeout(() => {
                         if (!started) return;
                         const answerUtterance = new SpeechSynthesisUtterance(randomAnswer);
-                        answerUtterance.lang = "en-US";
+                        answerUtterance.lang = "en-GB";
                         answerUtterance.pitch = 1;
                         answerUtterance.rate = 1;
                         speechSynthesis.speak(answerUtterance);
